@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smart Sewage Management System - Gambian Design System
+Inspired by Gambian flag colors and African aesthetics
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Gambian-inspired color palette */
+    --background: 45 15% 97%;
+    --foreground: 20 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 25% 15%;
+
+    /* Gambian flag red - primary action color */
+    --primary: 355 85% 55%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Gambian flag blue - secondary actions */
+    --secondary: 215 100% 45%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Earth tones for muted elements */
+    --muted: 45 15% 95%;
+    --muted-foreground: 30 10% 45%;
+
+    /* Gambian flag green - success/active states */
+    --accent: 145 65% 45%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 355 85% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 45 15% 88%;
+    --input: 45 15% 93%;
+    --ring: 355 85% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(355 85% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(215 100% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(145 65% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(355 85% 55%) 0%, hsl(215 100% 45%) 50%, hsl(145 65% 45%) 100%);
+    /* Background image for site hero / page background */
+    --bg-image: url('./assets/background.jpg');
+    --hero-image: url('./assets/hero-image.jpg');
+    --bg-fallback: url('./assets/istockphoto-1457653601-612x612.jpg');
+    
+    /* African pattern shadows */
+    --shadow-soft: 0 4px 20px hsl(var(--primary) / 0.1);
+    --shadow-medium: 0 8px 30px hsl(var(--primary) / 0.15);
+    --shadow-strong: 0 15px 40px hsl(var(--primary) / 0.2);
+    
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* single site background image (only here) - very subtle overlay so image shows through */
+    background-image: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.01)), var(--bg-image), var(--bg-fallback);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+
+  /* Utility background classes for frontpage sections */
+  /* Overlays only — body holds the actual background image so it loads once. */
+  .page-bg-hero {
+    /* use the background image for HeroSection with a light dark overlay */
+    background-image: linear-gradient(rgba(0,0,0,0.12), rgba(0,0,0,0.12)), var(--bg-image), var(--bg-fallback);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .page-bg-feature {
+    /* use the hero image for FeatureSection with a subtle white wash overlay */
+    background-image: linear-gradient(rgba(255,255,255,0.12), rgba(255,255,255,0.12)), var(--hero-image), var(--bg-fallback);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .page-bg-header {
+    /* keep header readable but slightly more transparent */
+    background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6));
+  }
+
+  /* Global form and control styles to match new theme */
+  input,
+  textarea,
+  select {
+    @apply bg-card border border-border text-foreground rounded-md px-3 py-2 shadow-soft;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply outline-none ring-2 ring-primary/40;
+  }
+
+  button {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-primary-foreground bg-primary shadow-medium;
+  }
+
+  button.secondary {
+    @apply bg-secondary text-secondary-foreground shadow-soft;
+  }
+
+  .dark body {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-image), var(--bg-fallback);
+  }
+}
